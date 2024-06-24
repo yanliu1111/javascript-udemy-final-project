@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/yanliu1111/javascript-udemy-final-project#readme",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.12.0",
     "parcel": "^2.12.0"
   }
 }
