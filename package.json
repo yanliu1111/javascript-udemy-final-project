@@ -17,11 +17,19 @@
   },
   "homepage": "https://github.com/yanliu1111/javascript-udemy-final-project#readme",
   "devDependencies": {
+    "@babel/plugin-transform-private-methods": "^7.24.7",
+    "@babel/plugin-transform-private-property-in-object": "^7.24.7",
     "@parcel/transformer-sass": "^2.12.0",
     "parcel": "^2.12.0"
   },
   "dependencies": {
     "core-js": "^3.37.1",
     "regenerator-runtime": "^0.14.1"
+  },
+  "babel": {
+    "plugins": [
+      "@babel/plugin-transform-private-methods",
+      "@babel/plugin-transform-private-property-in-object"
+    ]
   }
 }
