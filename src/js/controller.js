@@ -3,7 +3,7 @@ import 'regenerator-runtime/runtime';
 
 import * as model from './model.js';
 
-import { isInteger } from 'core-js/core/number';
+import { async } from 'regenerator-runtime';
 import recipeView from './views/recipeView.js';
 
 //core-js is for polyfilling modern JS features
@@ -26,7 +26,8 @@ const controlRecipes = async function () {
     // twp options: 1 recipeView.render(model.stat.recipe); 2 const recipeView = new RecipeView(model.stat.recipe);
     recipeView.render(model.state.recipe);
   } catch (err) {
-    console.log(err);
+    // from model.js load recipe function, then renderError function from recipeView.js
+    recipeView.renderError();
   }
 };
 
