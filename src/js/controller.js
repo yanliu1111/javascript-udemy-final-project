@@ -3,6 +3,7 @@ import 'regenerator-runtime/runtime';
 
 import * as model from './model.js';
 
+import { isInteger } from 'core-js/core/number';
 import recipeView from './views/recipeView.js';
 
 //core-js is for polyfilling modern JS features
@@ -25,12 +26,12 @@ const controlRecipes = async function () {
     // twp options: 1 recipeView.render(model.stat.recipe); 2 const recipeView = new RecipeView(model.stat.recipe);
     recipeView.render(model.state.recipe);
   } catch (err) {
-    alert(err);
+    console.log(err);
   }
 };
 
-controlRecipes();
-['hashchange', 'load'].forEach(ev =>
-  window.addEventListener(ev, controlRecipes)
-);
 // window.addEventListener('hashchange', controlRecipes);
+const init = function () {
+  recipeView.addHandlerRender(controlRecipes);
+};
+init();
