@@ -15,9 +15,9 @@ import searchView from './views/searchView.js';
 
 ///////////////////////////////////////
 // come from parcel
-if (module.hot) {
-  module.hot.accept();
-}
+// if (module.hot) {
+//   module.hot.accept();
+// }
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
@@ -25,7 +25,7 @@ const controlRecipes = async function () {
     recipeView.renderSpinner();
     // 1. Loading recipe
     await model.loadRecipe(id);
-    console.log(model.state.search.results);
+    // console.log(model.state.search.results);
     // 2. Rendering recipe
     // twp options: 1 recipeView.render(model.stat.recipe); 2 const recipeView = new RecipeView(model.stat.recipe);
     recipeView.render(model.state.recipe);
@@ -44,7 +44,9 @@ const controlSearchResults = async function () {
     await model.loadSearchResults(query);
     // 3. Render results
     //console.log(model.state.search.results);
-    resultsView.render(model.state.search.results);
+    // resultsView.render(model.state.search.results);
+    resultsView.render(model.getSearchResultsPage());
+    // paginationView.render(model.state.search);
   } catch (err) {
     console.log(err);
   }
