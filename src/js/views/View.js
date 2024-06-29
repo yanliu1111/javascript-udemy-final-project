@@ -13,9 +13,6 @@ export default class View {
     this._parentElement.innerHTML = ('afterbegin', markup);
   }
   update(data) {
-    if (!data || (Array.isArray(data) && data.length === 0))
-      return this.renderError();
-
     this._data = data;
     const newMarkup = this._generateMarkup();
 
@@ -36,10 +33,11 @@ export default class View {
       }
 
       // Updates changed ATTRIBUTES
-      if (!newEl.isEqualNode(curEl)) console.log(Array.from(newEl.attributes));
-      Array.from(newEl.attributes).forEach(attr =>
-        curEl.setAttribute(attr.name, attr.value)
-      );
+      if (!newEl.isEqualNode(curEl))
+        // console.log(Array.from(newEl.attributes));
+        Array.from(newEl.attributes).forEach(attr =>
+          curEl.setAttribute(attr.name, attr.value)
+        );
     });
   }
   _clear() {
