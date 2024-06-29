@@ -30,6 +30,7 @@ const controlRecipes = async function () {
     // 2. Rendering recipe
     // twp options: 1 recipeView.render(model.stat.recipe); 2 const recipeView = new RecipeView(model.stat.recipe);
     recipeView.render(model.state.recipe);
+    // controlServings();
   } catch (err) {
     // from model.js load recipe function, then renderError function from recipeView.js
     recipeView.renderError();
@@ -63,8 +64,16 @@ const controlPagination = function (goToPage) {
   paginationView.render(model.state.search);
 };
 // window.addEventListener('hashchange', controlRecipes);
+const controlServings = function (newServings) {
+  // Update the recipe servings (in state)
+  model.updateServings(newServings);
+  // Update the recipe view
+  // recipeView.render(model.state.recipe);
+  recipeView.render(model.state.recipe);
+};
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
+  recipeView.addHandlerServings(controlServings);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
 };
