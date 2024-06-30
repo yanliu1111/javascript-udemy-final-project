@@ -3,6 +3,7 @@ import 'regenerator-runtime/runtime';
 
 import * as model from './model.js';
 
+import addRecipeView from './views/addRecipeView.js';
 import { async } from 'regenerator-runtime';
 import bookMarksView from './views/bookMarksView.js';
 import paginationView from './views/paginationView.js';
@@ -97,6 +98,10 @@ const constrolAddBookmarks = function () {
   bookMarksView.render(model.state.bookmarks);
 };
 
+const controlAddRecipe = function (newRecipe) {
+  console.log(newRecipe);
+};
+
 const init = function () {
   bookMarksView.addHandlerRender(constrolAddBookmarks);
   recipeView.addHandlerRender(controlRecipes);
@@ -104,5 +109,6 @@ const init = function () {
   recipeView.addHandlerBookmark(constrolAddBookmark);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
+  addRecipeView.addHandlerUpload(controlAddRecipe);
 };
 init();
