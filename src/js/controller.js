@@ -100,10 +100,13 @@ const constrolAddBookmarks = function () {
 
 const controlAddRecipe = async function (newRecipe) {
   try {
-    // console.log(newRecipe);
+    // Show loading spinner
+    addRecipeView.renderSpinner();
+    // Upload the new recipe data
     await model.uploadRecipe(newRecipe);
+    console.log(model.state.recipe);
   } catch (err) {
-    console.error('🌋', err);
+    console.error('💥', err);
     addRecipeView.renderError(err.message);
   }
 };
