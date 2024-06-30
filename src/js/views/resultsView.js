@@ -11,8 +11,7 @@ class ResultsView extends View {
     return this._data.map(this._generateMarkupPreview).join('');
   }
   _generateMarkup() {
-    console.log(this._data); // model.state.search.results
-
+    // console.log(this._data); // model.state.search.results
     return this._data.map(result => previewView.render(result, false)).join('');
   }
 }
