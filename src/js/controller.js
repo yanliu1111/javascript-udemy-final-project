@@ -3,6 +3,7 @@ import 'regenerator-runtime/runtime';
 
 import * as model from './model.js';
 
+import { MODAL_CLOSE_SEC } from './config.js';
 import addRecipeView from './views/addRecipeView.js';
 import { async } from 'regenerator-runtime';
 import bookMarksView from './views/bookMarksView.js';
@@ -105,6 +106,14 @@ const controlAddRecipe = async function (newRecipe) {
     // Upload the new recipe data
     await model.uploadRecipe(newRecipe);
     console.log(model.state.recipe);
+    // Render recipe
+    recipeView.render(model.state.recipe);
+    //success message
+    addRecipeView.renderMessage();
+    // close form window
+    setTimeout(function () {
+      addRecipeView.toggleWindow();
+    }, MODAL_CLOSE_SEC * 1000);
   } catch (err) {
     console.error('💥', err);
     addRecipeView.renderError(err.message);
