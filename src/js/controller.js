@@ -101,7 +101,7 @@ const constrolAddBookmarks = function () {
 const controlAddRecipe = function (newRecipe) {
   console.log(newRecipe);
 };
-
+// publisher sabscribe pattern
 const init = function () {
   bookMarksView.addHandlerRender(constrolAddBookmarks);
   recipeView.addHandlerRender(controlRecipes);

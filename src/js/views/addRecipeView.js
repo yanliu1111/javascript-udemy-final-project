@@ -36,8 +36,8 @@ class AddRecipeView extends View {
       // console.log(this); // form
       // console.log(new FormData(this)); // FormData {}
       const dataArr = [...new FormData(this)]; // convert FormData to array
-      const data = Object.fromEntries(dataArr); // convert array to object
-      handler(data);
+      const data = Object.fromEntries(dataArr); // fromEnries is opposite method of entries method, convert array to object
+      handler(data); // handler is controlAddRecipe from controller.js
     });
   }
   _generateMarkup() {}
