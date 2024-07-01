@@ -81,3 +81,15 @@
     ]
   }
 ```
+
+2.  After building the forkify app via Parcel and deploying it on Netlify, the app is throwing error for 'fractional' module. `"Uncaught ReferenceError: assignment to undeclared variable Fraction"`<br>
+    In console write: npm i fracty, go to your recipeView.js, then replace:<br>
+    `import { Fraction } from 'fractional';`<br>
+    to this:<br>
+    `import fracty from 'fracty';`<br>
+    And in the same file replace: <br>
+    `new Fraction(ing.quantity.toString())` <br>
+    to this:<br>
+    `fracty(ing.quantity)` <br>
+    Then in console write: `npm run build`<br>
+    Deploy dist folder to netlify and it should be working.
