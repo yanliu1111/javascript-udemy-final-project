@@ -1,7 +1,9 @@
 import { API_KEY, API_URL, RES_PER_PAGE } from './config.JS';
-import { getJSON, sendJSON } from './helpers.js';
 
+import { AJAX } from './helpers.js';
 import { async } from 'regenerator-runtime';
+
+// import { getJSON, sendJSON } from './helpers.js';
 
 export const state = {
   recipe: {},
@@ -31,12 +33,13 @@ const createRecipeObject = function (data) {
 
 export const loadRecipe = async function (id) {
   try {
-    const data = await getJSON(`${API_URL}${id}`);
+    const data = await AJAX(`${API_URL}${id}?key=${API_KEY}`);
     state.recipe = createRecipeObject(data);
     // console.log(stat.recipe);
     if (state.bookmarks.some(bookmark => bookmark.id === id))
       state.recipe.bookmarked = true;
     else state.recipe.bookmarked = false;
+    console.log('state.recipe', state.recipe);
   } catch (err) {
     console.log(`${err} 💥💥💥💥💥`);
     throw err;
@@ -45,16 +48,18 @@ export const loadRecipe = async function (id) {
 export const loadSearchResults = async function (query) {
   try {
     state.search.query = query;
-    const data = await getJSON(`${API_URL}?search=${query}`);
+    const data = await AJAX(`${API_URL}?search=${query}&key=${API_KEY}`);
+    console.log('data', data);
     state.search.results = data.data.recipes.map(rec => {
       return {
         id: rec.id,
         title: rec.title,
         publisher: rec.publisher,
         image: rec.image_url,
+        ...(rec.key && { key: rec.key }),
       };
     });
-    console.log(state.search.results);
+    console.log('state.search.results', state.search.results);
     state.search.page = 1;
   } catch (err) {
     console.error(`${err} 💥💥💥💥💥`);
@@ -123,7 +128,7 @@ export const uploadRecipe = async function (newRecipe) {
       servings: +newRecipe.servings,
       ingredients,
     };
-    const data = await sendJSON(`${API_URL}?key=${API_KEY}`, recipe);
+    const data = await AJAX(`${API_URL}?key=${API_KEY}`, recipe);
     state.recipe = createRecipeObject(data);
     addBookmark(state.recipe);
   } catch (err) {

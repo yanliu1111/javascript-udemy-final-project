@@ -56,7 +56,7 @@ const controlSearchResults = async function () {
     // 3. Render results
     //console.log(model.state.search.results);
     // resultsView.render(model.state.search.results);
-    resultsView.render(model.getSearchResultsPage(4));
+    resultsView.render(model.getSearchResultsPage());
     // 4. Render initial pagination buttons
     paginationView.render(model.state.search);
   } catch (err) {
@@ -110,6 +110,10 @@ const controlAddRecipe = async function (newRecipe) {
     recipeView.render(model.state.recipe);
     //success message
     addRecipeView.renderMessage();
+    // Render bookmark view
+    bookMarksView.render(model.state.bookmarks);
+    // Change ID in URL
+    window.history.pushState(null, '', `#${model.state.recipe.id}`);
     // close form window
     setTimeout(function () {
       addRecipeView.toggleWindow();
