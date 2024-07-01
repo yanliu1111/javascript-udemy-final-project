@@ -2,6 +2,14 @@
 
 ### 🔥 Recipe application with custom recipe uploads.
 
+**Deployed version in Netlify:** [recipe-menu-checkinglist](https://recipe-menu-checkinglist-app-yandev.netlify.app/) <br>
+**How to use:**
+
+- **Search** for a recipe, give a search word like 'noodles' 🍜 or 'pizza' 🥙, click on it, and you will see the recipe with ingredients and servings. And servings can be updated by clicking on the plus ➕ or minus ➖ button.
+  You can also add it to your bookmarks, and upload your own recipes. <br>
+- **Bookmark** 💖 your favorite recipes by clicking on the heart icon, and you can see them by clicking on the 'Bookmarks' button. <br>
+- **Upload** your own recipes by clicking on the 'Upload recipe' button 📑, and fill in the form. After that, you can see your recipe in the search results. There will be a personal icon 👤 beside the recipe, which means it's your recipe follow your id. <br>
+
 ### ⚙ 1. Main technologies building:
 
 - [x] DOM manipulation
